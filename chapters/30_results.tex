@@ -1,0 +1,99 @@
+\chapter{Eigene Resultate} \label{chap:results}
+
+Die Theorie wird in Kapitel \ref{chap:results} verwendet, um die Resultate zu erläutern.
+In diesen werden weitere topologische Indizes, die im theoretischen Teil nicht vorgestellt wurden, analysiert und verglichen.
+
+Für aufschliessende Informationen zu allen aktuellen und bedeutsamen topologischen Indizes können bestehende Literaturwerke der Graphentheorie zurate gezogen werden \cite{dehmer_information_2012,ravi_computation_2022,amin_analysis_2022,sarkar_neighbourhood_2021}.
+Der Werdegang der Graphenklassifikation wurde aufgearbeitet und das Thema Graph-Isomorphie erläutert.
+Bei der Klassifikation wurden \textit{State-of-the-Art} Methoden und deren Hintergründe vorgestellt.
+Als Nächstes folgen die verwendeten Daten für die Resultate sowie der Aufbau der Methodik.
+
+Dieses Kapitel soll einen Überblick über die Resultate dieser Arbeit geben.
+Es werden die visualisierten Resultate sowie die Ergebnisse der Tests zusammengefasst.
+Die in der Einleitung \ref{chap:introduction} beschriebenen Hypothesen werden getestet und die erwarteten Resultate erarbeitet.
+
+\newpage
+
+\section{Erwartete Resultate}
+
+Im Idealfall wird das Resultat eine quantitative Analyse verschiedener topologischer Indizes sein und einen Beitrag zur Usefulness von topologischen Indizes leisten.
+Die quantitative Analyse umfasst eine explorative Datenanalyse der topologischen Indizes in verschiedenen Graph Klassen, eine statistische Analyse der Zusammenhänge zwischen den topologischen Indizes und den Graph-Klassen, so wie eine Machine Learning Analyse der Graph Klassen.
+
+Mit der Analyse sollen die topologischen Indizes auf ihre Sinnhaftigkeit und Anwendbarkeit in verschiedenen Kontexten untersucht werden.
+Als Resultat soll eine Auflistung respektive Rangfolge der sinnvollsten Messwerte für die eingegebenen Graphen und topologischen Indizes ausgegeben werden.
+Der Algorithmus und die Formel zur Berechnung sollten möglichst einfach zugänglich und variabel sein. Der Code für die Berechnung soll Open Source sein.
+
+Im Schlussteil der Arbeit sollen folgenden Resultate vorliegen:
+\begin{itemize}
+    \item eine sinnvolle Analyse und Auflistung der topologischen Messwerte,
+    \item eine Analyse der Berechnung des Usefulness-Scores von topologischen Indizes in verschiedenen Netzwerkklassen,
+    \item ein Python-Modul zur Berechnung des Usefulness-Scores und
+    \item Vorschläge von topologischen Messwerten zur Struktur eines gelieferten Netzwerks.
+\end{itemize}
+
+Um diese Resultate zu erreichen, werden folgende Schritte durchgeführt:
+\begin{enumerate}
+    \item Datenaufbereitung,
+    \item Durchführung von Experimenten,
+    \item Entwicklung eines Systems, welches topologische Indizes sinnvoll vergleicht, sowie
+    \item Implementierung der Systeme in Python.
+\end{enumerate}
+
+In der folgenden Übersicht ist dargestellt, wie die Erarbeitung der Resultate vonstattengeht:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{images/30_results/activity_research.png}
+    \caption{Erarbeitung der Resultate}
+    \label{fig:results}
+\end{figure}
+
+Auf Abbildung \ref{fig:results} ist dargestellt, auf welchem Weg die Resultate erarbeitet werden. 
+Gestartet wird mit der Analyse und Dokumentation der existierenden topologischen Indizes.
+Der Studie zur Klassifikation von Graphen folgt das Beschaffen und Klassifizieren der Daten. 
+Von da an ist die Arbeit in zwei parallele Arbeitsstränge geteilt. 
+Mit einer statistischen Analyse werden die topologischen Indizes miteinander verglichen und daneben wird ein Machine-Learning-Modell entwickelt und trainiert, welches die Graphen klassifiziert. 
+Die Resultate der beiden Arbeitsstränge werden zusammengeführt und die Hypothesen getestet.
+
+\newpage
+
+\input{chapters/31_data}
+
+\newpage
+\input{chapters/32_correlation}
+
+\input{chapters/33_classification}
+
+\section{Testen der Hypothesen}
+
+Im Rahmen der Arbeit werden drei Hypothesen formuliert. 
+In diesem Kapitel wurden die Methoden zur Erarbeitung von Resultaten entwickelt, um diese Hypothesen zu beantworten.
+
+Die Hypothesen lauten wie folgt:
+
+\begin{itemize}
+    \item [H1] Topologische Indizes können miteinander verglichen werden, indem sie in einer Menge $\mathcal{G}$ Graphen einer Netzwerkklasse $\mathcal{N}$ gegenübergestellt und analysiert werden.
+    \item [H2] Ein nützlicher topologischer Index $\Phi$ für die Eingabe eines Netzwerkes kann gefunden werden, indem die Relevanzen der topologischen Indizes innerhalb der Netzwerkklasse $\mathcal{N}$ definiert und berechnet werden.
+    \item [H3] Durch den Einsatz von Machine Learning kann der Prozess für das Analysieren und Untersuchen der Relevanz von $\Phi$ in $\mathcal{N}$ verbessert und vereinfacht werden.
+\end{itemize}
+
+\subsubsection{H1: Vergleichbarkeit der topologischen Indizes}
+
+Zur Überprüfung von Hypothese H1 wurden die topologischen Indizes in einem oder mehreren Netzwerken verglichen. 
+Hierbei wurde ein statistischer Ansatz gewählt und verschiedene Graphen mit unterschiedlichen Strukturen erzeugt. 
+Die normalisierten Daten wurden visuell dargestellt und auf ihre Korrelation innerhalb der Klassen getestet. 
+Es ist festzustellen, dass die topologischen Indizes miteinander verglichen werden können.
+
+\subsubsection{H2: Berechnung des nützlichen topologischen Index}
+
+Zur Überprüfung von Hypothese H2 wurde die PCA-Methode angewendet und die Komponenten der PCs analysiert.
+Aus der Analyse der Komponenten wurde ersichtlich, dass einige topologische Indizes innerhalb der PCs mehr Aussagekraft haben als andere.
+Dies bestätigt auch die Analyse der Vergleichbarkeit und Korrelation der topologischen Indizes.
+Es wurde der topologische Index mit der höchsten Relevanz für die erste und zweite PC gewählt.
+
+\subsubsection{H3: Machine Learning}
+
+Zur Überprüfung von Hypothese H3 wurde ein GCN trainiert.
+Diese hat eine Genauigkeit von über 90 \% erreicht, was bedeutet, dass es 90 \% der Graphen korrekt klassifiziert hat.
+Das GCN wurde verwendet, um die Klassen der Graphen zu bestimmen.
+Somit konnten die Erkenntnisse aus Hypothese H1 und H2 auf die Klassen der Graphen übertragen werden.

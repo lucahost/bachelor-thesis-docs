@@ -1,0 +1,35 @@
+@startuml
+skinparam dpi 300
+
+title Forschungsaufgaben und Prozess
+
+start
+
+:Analyse der topologischen Indizes;
+note left 
+    { Wiener, Randic, ... }
+end note
+:Forschung zu Graphenklassifikation;
+
+:Simulationsumgebung vorbereiten;
+
+:Graphen manuell labeln;
+note left
+    { Random, Small-World, Scale-free, Complete, Line, Tree, Star }
+end note
+
+fork
+    #yellow:PCA und Berechnung der Usefulness pro Graphenklasse;
+    note left
+        Statistische Analyse
+    end note
+fork again
+    #orange:ML-Modell für die Graphenklassifikation trainieren;
+    note right
+        Graph-Machine-Learning
+    end note
+end merge
+
+end
+
+@enduml

@@ -1,0 +1,20 @@
+@startuml
+skinparam componentStyle rectangle
+skinparam dpi 300
+
+[Netzwerk-Analyse, Graphen-Theorie, Diskrete Mathematik, \nPhysik, Chemie, Informationstheorie, Quantenchemie, \nOrganische Chemie, Differenz-Theorie, Algebraische Topologie] as top
+
+
+[Topologische Indizes] as main
+
+top --> main : Werden abgeleitet von...
+
+[Statistik \nChemometrik, \nChem-Informatik] as right
+
+main <-right-> right: Werden verarbeitet von...
+
+[QSAR/QSPR, Medizin-Chemie, \nPharmazeutische Genomik, Wirkstoff-Design, \nToxikologie, Proteomik, Analytische Chemie, Umweltmetrik] as bottom
+
+main --> bottom : Werden angewendet in...
+
+@enduml

@@ -1,0 +1,179 @@
+\chapter{Diskussion}
+
+Die Resultate, die Implementierung und die Tests werden im Folgenden reflektiert und diskutiert. 
+Zunächst erfolgt eine Analyse der erarbeiteten Resultate, anschliessend wird der Ansatz von Ma et al. kritisch betrachtet und mögliche Verbesserungen werden vorgeschlagen. 
+Danach wird ein persönliches Fazit zur Arbeit gezogen, indem deren Verlauf bewertet wird. 
+Schliesslich wird ein Ausblick gegeben, es werden potenzielle zukünftige Schritte und alternative Vorgehensweisen erörtert.
+
+\newpage
+
+\section{Analyse}
+
+Da die Erarbeitung der Graphen sowie die Klassifikation essenzielle Teile der Arbeit sind, werden diese ebenfalls diskutiert.
+Dann werden die Resultate der PCA-Methode analysiert, welche für die Analyse der topologischen Masse verwendet wurden.
+Auch werden die Resultate der Klassifikation untersucht.
+
+Die Methodik der Arbeit wurde mit Fokus auf der statistischen Analyse und dem Einsatz von Machine Learning durchgeführt.
+
+Bereits in Kapitel \ref{chap:results} wurden die Hypothesen vorgestellt und Tests zu diesen durchgeführt und diskutiert.
+In diesem Kapitel liegt der Schwerpunkt auf der Beantwortung der Forschungsfragen sowie der Diskussion der Resultate.
+
+\subsection{Beantwortung der Forschungsfragen}
+
+\subsubsection{Forschungsfrage 1}
+
+\textit{F1: Wie können verschiedene topologische Indizes sinnvoll miteinander verglichen werden?}
+
+Diese Frage lässt sich durch die Analyse der Resultate zu den topologischen Indizes beantworten.
+Die Korrelation der topologischen Indizes zu messen, war ein wesentlicher Schritt, um die topologischen Indizes miteinander zu vergleichen.
+Stark korrelierende topologische Indizes wurden identifiziert, welche dann in der Analyse und den Resultaten zu den topologischen Indizes visualisiert und erklärt wurden.
+
+Es kam dabei heraus, dass die topologischen Indizes je nach Graphenklasse unterschiedliche Werte aufweisen. Muster konnten bereits in der explorativen Datenanalyse gefunden werden. Hier wurden die Werte der topologischen Indizes für die Graphenklassen in Abhängigkeit der Anzahl Knoten visualisiert. Die Resultate sind in \ref{fig:explorative_analysis} zu sehen.
+Für die Random-Graphenklasse ist auf Abbildung \ref{fig:big-ti-comparison-random} zu erkennen, wie der Wiener-Index bei geringer Knotenanzahl stark variiert, während er aber bei mehr Knoten fast konstant bleibt.
+Bei den Small-World-Graphen ist auf Abbildung \ref{fig:big-ti-comparison-smallworld} der Hosoya-Z-Index besonders spannend, er weist ein sprunghaftes Verhalten auf.
+
+Bereits in der explorativen Datenanalyse konnten ähnliche Kurven, respektive Werte für die topologischen Indizes, für die Graphenklassen gefunden werden.
+Als Nächstes folgte die Korrelationsanalyse der topologischen Indizes, welche in Kapitel \ref{chap:results} vorgestellt wurde. Mithilfe der Spearman-Korrelation wurden die topologischen Indizes innerhalb der Graphenklassen $ \mathcal{N} $ miteinander verglichen. Die Heatplots auf Abbildung \ref{fig:correlation-random} - \ref{fig:correlation-star} zeigten, dass bereits einige Indizes untereinander perfekt monoton aufsteigend und absteigen miteinander korrelieren.
+Die paarweisen Korrelationen sind auf den Abbildungen \ref{fig:correlation-pairs-random} - \ref{fig:correlation-pairs-star} im Anhang \ref{sec:correlation-pairs} zu sehen.
+Besonders eindrücklich ist die Korrelation aller Indizes der Graphenklasse \mintinline{python3}{line} welche ausser dem CII-, Hosoya-Z- und dem Szeged-Index alle monoton aufsteigen korrelieren. Dies ist auf Abbildung \ref{fig:big-ti-comparison-line} besonders gut zu sehen.
+
+\subsubsection{Forschungsfrage 2}
+
+\textit{F2: Wie kann ein nützlicher topologischer Index $\Phi$ für die Eingabe eines Netzwerkes $g$ berechnet werden?}
+
+Diese Frage wurde durch die Definition des \textbf{nützlichen topologischen Index $\Phi$} beantwortet.
+Die Entscheidung fiel auf die Definition \ref{thm:useful_index} in Kapitel \ref{chap:results}.
+
+Nach der Aufarbeitung der Literatur und Theorie, sowie der Korrelationsanalyse der topologischen Indizes folgte die PCA-Methode für die Analyse der Einflüsse der topologischen Indizes auf die Hauptkomponenten.
+Mittels der PC-Methode wurden die 7-dimensionalen topologischen Indizes auf vier Dimensionen reduziert.
+Diese vier Dimensionen sind für über 95 \% der Varianz zuständig \ref{fig:scree-random} - \ref{fig:scree-cum-star}.
+
+Die Loading-Plots wurden zur vereinfachten Darstellung für zwei Hauptkomponenten erstellt. Auf diesen wird ersichtlich, dass einige topologische Indizes stark auf die Hauptkomponenten wirken. Beispielsweise ist auf Abbildung \ref{fig:pca-loading-complete} der Einfluss des Estrada-Index auf die 2. Hauptkomponente der Graphenklasse \mintinline{python3}{complete} stark ausgeprägt.
+Die Analyse führt schlussendlich zur Aussage, dass der Einfluss der topologischen Indizes auf die Hauptkomponenten einen Beitrag zur Definition des \textbf{nützlichen topologischen Index $\Phi$} leistet.
+
+Die aufgestellte Formel \ref{eq:index_usefulness} und die Berechnungen in \ref{eq:test_index_usefulness} lässt dazu führen, einen \textbf{nützlichen topologischen Index $\Phi$} zu definieren.
+
+Dieser Begriff der \textbf{\textit{Usefulness}} ist ein wichtiger Bestandteil der Arbeit. Er ist jedoch nicht vollkommen definiert. Da es sich um ein komplexes Problem handelt, ist es schwierig, eine vollständige Definition zu finden. Die Arbeit soll damit aber einen Beitrag zum Problem leisten.
+
+\subsubsection{Forschungsfrage 3}
+
+\textit{F3: Kann durch Einsatz von Machine Learning das Vergleichen von topologischen Netzwerkmesswerten optimiert werden?}
+
+Die Antwort auf diese Frage ist ein klares Ja. Durch den Einsatz der Graphenklassifikation mit einem GCN konnte ein starker Mehrwert erzielt werden.
+Das neuronale Netz hat sich als gutes Werkzeug für die Klassifikation der Graphen erwiesen.
+Es ist festzustellen, dass ein grosses Potenzial für weitere Anwendungen besteht. Die Klassifikation der Graphen mit einem GCN hat hervorragend funktioniert.
+Das Netz hat eine hohe Genauigkeit erreicht und die Graphenklassen gut voneinander getrennt. Die Resultate sind in Kapitel \ref{chap:results} zu sehen.
+Auf Abbildung \ref{fig:accuracy} ist zu sehen, dass in bereits wenigen Epochen konnte eine hohe Genauigkeit erreicht werden.
+Es wäre denkbar, dass in der Arbeit von Ma et al. \textbf{Meta-Indizes} wie die \textit{Structure Sensitivity}, die \textit{Uniqueness} oder die \textit{Abruptness} als Features verwendet werden.
+
+\subsection{Datenaufbereitung}
+
+Es wurde mit Graphen aus sieben Klassen gearbeitet: Erdös-Rényi Random, Small-World, Scale-free, Tree, Complete, Path und Star.
+Diese Graphen wurden mithilfe der Python-Bibliothek NetworkX \cite{hagberg_exploring_2008} erzeugt.
+Aufgrund von früh im Studium gesammelter Erfahrung mit der Erzeugung von Graphen war es kein Problem, diese durchzuführen.
+
+Bereits bei der Generation der Graphen wurde der Code modular und wiederverwendbar parametrisiert, was in der explorativen Phase eine schnelle Erzeugung von Graphen mit verschiedenen Parametern ermöglichte.
+
+Die Ermittlung der topologischen Indizes wurde in einem separaten Skript vorgenommen, welches die Graphen aus dem vorherigen Schritt einliest und die topologischen Indizes berechnet.
+Es wurde mit einer Datenstruktur gearbeitet, welche die Graphen und die zugehörigen topologischen Indizes speichert.
+
+\subsection{Statistische Analyse}
+
+Zu Beginn wurde die explorative Datenanalyse durchgeführt, bei der erste Erkenntnisse gesammelt wurden.
+Nach dem Normalisieren der Werte der topologischen Indizes und der bereits vorhanden sauberen Datenstruktur wurden die Daten visualisiert.
+In \ref{fig:explorative_analysis} ist zu sehen, wie sich der topologische Messwert einer Klasse zur Anzahl Knoten verhält.
+
+Nach der explorativen Datenanalyse folgte die statistische Analyse.
+
+Es bestand bereits eine Vermutung zur Korrelation der topologischen Indizes, diese wurde mit der Spearman-Korrelation verifiziert.
+Hier ging es nicht mehr nur um die Korrelation der Anzahl Knoten zu den topologischen Indizes, sondern um die der topologischen Indizes untereinander.
+Aus den Korrelationsplots (\ref{fig:correlation-random}-\ref{fig:correlation-star}) ist ersichtlich, dass einige topologische Indizes miteinander korrelieren.
+Wie bereits in einigen vorherigen Werken erwähnt, ist die Suche nach topologischen Indizes mit einer hohen Eindeutigkeit ein anhaltender Forschungsgegenstand \cite{diudea_network_2011,dehmer_information_2012}.
+
+Es wurde die PCA-Methode genutzt, um eine Reihe von relevanten topologischen Massen aus der Literatur nach ihrem Einfluss auf die Hauptkomponenten innerhalb der Klasse zu untersuchen.
+
+\subsection{Klassifikation}
+
+Mit einem GCN \cite{kipf_semi-supervised_2017} wurde ein Modell trainiert, um einen Graphen in eine der sieben Klassen zu klassifizieren.
+Da die Graphen bei der Erzeugung direkt nach ihrer Klasse erstellt wurden, waren die gekennzeichneten Daten für das Training des neuronalen Netzes vorhanden.
+Es wurde die Python-Bibliothek PyTorch \cite{Paszke_PyTorch_An_Imperative_2019} mit der Erweiterung PyTorch Geometric \cite{fey_lenssen_2019} für die Implementierung des neuronalen Netzes verwendet.
+
+Das Training des neuronalen Netzes wurde in einem separaten Skript durchgeführt, welches die Graphen aus dem vorherigen Schritt einliest und das Modell trainiert.
+Insgesamt dauerte das Training mit 170 Epochen 62 Minuten auf einem Desktop-PC mit einem \enquote{24 Core AMD Ryzen 9 3900X 4.3GHz}-Prozessor und einer \enquote{NVIDIA GeForce RTX 2080 Ti}-Grafikkarte \ref{tab:tech-spec}.
+Zu Beginn war die Genauigkeit des Modells äusserst niedrig. Ein Grund dafür ist, dass bei den Small-World- und Random-Graphen zu ähnliche Parameter verwendet wurden.
+Dies führte zu einer besonders hohen Ähnlichkeit der Graphen, was das Modell verwirrte.
+
+Wie bereits in \ref{sec:classification} beschrieben, wurden die Hyper-Parameter des neuronalen Netzes angepasst, um die Genauigkeit schliesslich auf über 92 \% zu erhöhen.
+Dies ist ein hoher Wert. Die Tests haben gezeigt, dass das Modell ausgezeichnet in der Lage ist, die Graphen zu klassifizieren.
+
+\subsection{Vorschlag zum Ansatz von Ma et al.}
+
+Aktuell werden die Meta-Indizes für die Berechnung der Usefulness von topologischen Massen verwendet.
+Eine Erweiterung des Feature-Vektors, welcher je nach Klasse des Graphen anders aufgebaut ist, würde nach dieser Arbeit Sinn ergeben.
+Die Meta-Indizes versuchen das Problem der unterschiedlichen Graphen zu lösen, indem sie die topologischen Masse in einen gemeinsamen Nenner bringen.
+Doch auch bei den Meta-Indizes gibt es je nach Klasse unterschiedliche Prioritäten zur Berechnung der Usefulness.
+
+Als Beispiel ist ein Transportations-Graph zu nennen.
+Die meisten Graphen sind nicht dicht und haben viele Knoten mit einer geringen Anzahl Nachbarn. In der Literatur werden ihre Adjazenzmatrizen \textit{sparse} genannt.
+Dir vorliegenden Arbeit liegt die Definition aus \cite{dads:sg} zugrunde, welche auch am NIST (National Institute of Standards and Technology) verwendet wird.
+
+Scott et al. \cite{scott_network_2006} haben 2006 einen Network-Robustness-Index (NRI) vorgeschlagen.
+Die Problematik beim NRI ist, dass er primär für Transportsysteme geeignet ist. 
+In Bezug diese Arbeit und die gewünschten Resultate in der quantitativen Graphenanalyse besteht das Interesse an generellen Graphen.
+
+Während der Simulation und des Aufbaus der Datenstruktur zur weiteren Bearbeitung ist aufgefallen, dass die topologischen Indizes je nach Komplexität des Graphen und des topologischen Index eine grosse Rolle bei der Berechnung spielen.
+Deshalb empfiehlt der Autor der vorliegenden Arbeit, die Komplexität der topologischen Indizes ebenfalls als Meta-Index zu bewerten.
+
+Man betrachte insbesondere den Wiener-Index, welcher über
+
+\begin{equation}
+    W = \frac{1}{2} \sum_{i=1}^{n} \sum_{j=1}^{n} d_{ij}
+\end{equation}
+
+berechnet wird und bei dem $d_{ij}$ die kürzeste Distanz zwischen Knoten $i$ und Knoten $j$ ist.
+Dies ist bei einem Graphen mit $n$ Knoten überaus aufwendig und ergibt eine Laufzeitkomplexität $W(G)$ von $O(n^3 log n)$, $n$ ist die Anzahl Knoten von $G$.
+
+Somit ist aus der explorativen Datenanalyse ersichtlich, dass die Rechenzeit bei Hypercubes der 6. und höheren Dimensionen hoch ist.
+
+\section{Fazit}
+
+Diese Arbeit soll mit der Herleitung und Definition der Usefulness eines topologischen Indizes einen neuen Ansatz für die quantitativen Graphenanalysen liefern.
+Die Erkenntnisse aus der Arbeit können in die Forschung rund um das Thema \textit{\textbf{Usefulness}} von topologischen Indizes einfliessen.
+Mit der Korrelation zwischen den topologischen Indizes innerhalb einer Graphenklasse konnte bestehende Schwierigkeiten und Ähnlichkeiten aufgezeigt werden.
+
+Mit meinen Resultaten, dem Ansatz der Klassifikation von Graphen und der Analyse der Einflüsse der Indizes auf die Hauptkomponenten der PCA-Methode, wurde ein neuer Ansatz für die quantitativen Graphenanalysen gefunden.
+Neben Ansatz von Ma et al. und diesem Ansatz benötigt es noch weitere Resultate, um die Usefulness sinnvoll zu definieren und einen Standard zu schaffen. 
+Die Usefulness für topologische Indizes ist ein überaus komplexes Thema, quantitativ ist es kompliziert zu definieren.
+
+Die Arbeit war ausserordentlich interessant und hat viel Neues gezeigt.
+Wir haben viel über Graphen und topologische Masse gelernt und konnten uns mit der Literatur auseinandersetzen.
+
+Die Aufarbeitung der Literatur zeigt, dass es zahlreiche topologische Masse gibt.
+Die Klassifikation von Graphen geht weit zurück und wurde mit vielen verschiedenen Methoden versucht.
+Gerade in der heutigen Zeit ist es aufgrund der neuronalen Netze faszinierend, die Klassifizierung von Graphen zu untersuchen.
+
+Die Wahl der topologischen Masse fiel auf diverse \emph{ältere} topologische Indizes. Diese sind in Kapitel 2 \ref{sec:topologische_indizes} beschrieben. 
+Die Hauptliteratur für die Erarbeitung der topologischen Indizes war \cite{balaban_1983_2014}.
+Es wäre interessant, modernere informationstheoretische topologische Indizes zu untersuchen.
+
+\section{Ausblick}
+
+Für zukünftige Werke in dem Bereich wäre es sinnvoll, den Ansatz der Klassifizierung zu wählen.
+Diese kann helfen, die Usefulness zu bewerten.
+
+In weiteren Studien zur Analyse der \textbf{\textit{Usefulness}} von topologischen Indizes wäre es interessant, moderne topologische Indizes und aktuelle Graphen-Neuronale Netze zu untersuchen.
+Des Weiteren könnten andere Graphenklassen untersucht und mehr Graphen als Trainingsdaten verwendet werden.
+Mit dem Code dieser Arbeit könnte ein solches Experiment weiter ausgebaut werden, sie bietet ein gutes Fundament für Machine-Learning getriebene Analyse von Graphen.
+
+Ein ähnlicher Ansatz für die Graph-Embeddings beim GCN könnte das Berechnen der Usefulness unterstützen.
+Hier könnte neben der Clustering-Methode aus \cite{ma_usefulness_2022} ebenfalls ein GCN verwendet werden.
+Die Meta-Indizes könnten als Node-Features genutzt werden.
+
+Zusammenfassend kann gesagt werden, dass diese Bachelor-Thesis wichtige Erkenntnisse über die Verwendung von topologischen Indizes in der Graphentheorie geliefert hat.
+Durch die Untersuchung verschiedener Indizes für eine Vielzahl von Graphen konnten nützliche Einblicke gewonnen werden, welche Indizes für bestimmte Graphenklassen am besten geeignet sind.
+
+Die entwickelte Anwendung, die den einflussreichsten topologischen Index für eine bestimmte Klasse von Graphen bestimmt, hat das Potenzial, ein wertvolles Werkzeug für Forscher und Praktiker zu sein, die mit Graphdaten arbeiten.
+Sie könnte in verschiedenen Bereichen wie der Molekular-, Bioinformatik, Sozial- und Synthetischen Graphen eingesetzt werden.
+
+Die Ergebnisse dieser Arbeit können dazu beitragen, Forschung und Praxis in der Graphenanalyse zu beeinflussen und somit auch mögliche zukünftige Entwicklungen in diesem Bereich vorantreiben.
+Es bleibt zu hoffen, dass die gewonnenen Erkenntnisse zu neuen Forschungsansätzen führen.

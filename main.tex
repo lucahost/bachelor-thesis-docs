@@ -1,0 +1,107 @@
+\documentclass{ffhsthesis}
+
+\usepackage{silence}
+
+\WarningFilter{hyperref}{You have enabled option `breaklinks'.}
+
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage[automark,headsepline]{scrlayer-scrpage}
+\usepackage[setspace=false]{scrhack}
+
+\usepackage{bm,cite,fontawesome5,microtype,enumitem,amsmath,svg,amssymb,afterpage,caption,tabto,minted,mdframed,url,tcolorbox,blindtext,mathrsfs,pdflscape,thmtools,todonotes,subcaption,csquotes,tabularx,adjustbox,float}
+
+\setkomafont{caption}{\footnotesize\itshape}
+\setkomafont{captionlabel}{\usekomafont{caption}}
+\newenvironment{code}{\captionsetup{type=listing}}{}
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+\setkomafont{pagehead}{\normalfont\normalcolor}
+
+\MakeOuterQuote{"}
+
+% Keywords command
+\providecommand{\keywords}[1]
+{
+  \small	
+  \textbf{\textit{Keywords---}} #1
+}
+
+\declaretheorem{theorem}
+\declaretheorem[sibling=theorem]{lemma}
+
+\numberwithin{equation}{chapter}
+
+\graphicspath{ {./images/} }
+
+\definecolor{LightGray}{gray}{0.9}
+
+\TabPositions{4cm}
+
+\begin{document}
+
+\dokumentTyp{Bachelor-Thesis}
+\studiengang{Informatik}
+\title{Quantitative Analyse von Netzwerk-Massen}
+\subtitle{Usefulness und weitere Aspekte} % optional
+\titelbild[height=5cm]{images/title_image}  % optional
+\author{Luca Hostettler}
+\date{15. März 2023}
+\wohnort{Zürich}
+\referent{Ao. Prof. Dr. habil. Matthias Dehmer\\ Departement Informatik\\Dozent Data Science}
+% \referentin{Name des/der Referenten/in\\ Titel\\Dozent:in für Fach}
+\eingereichtBei{Prof. Dr. Tobias Häberlein\\ Departement Informatik\\Departementsleiter}
+
+\dedication{
+  \textit{Diese Arbeit widme ich meiner Familie und meiner Partnerin Nathalie, welche stets an meiner Seite standen und mich unterstützt haben. Ohne ihre Hilfe wäre dies nicht möglich gewesen} \faHeart.
+
+  \textit{Mein Dank gilt meinem Betreuer Prof. Dr. Matthias Dehmer, welcher mich vor 2 Jahren in den Bereich der Graphentheorie eingeführt hat und mir diese spannenden Reise ermöglicht hat.}
+
+  \textit{Ebenso bedanken will ich mich bei Marc, ein Sparringpartner grosser Klasse und ein wahrer Freund} \faHandshake!
+}
+
+\maketitle
+
+\input{chapters/00_abstract}
+
+\tableofcontents
+
+\begin{abkuerzungen}[MUSTER] % Das Muster dient zur Bestimmung der Einrueckungstiefe
+  \item[BioChem] Biochemie
+  \item[ChemInf] Chemieinformatik
+  \item[CNN] Convolutional Neural Network
+  \item[DB] Database
+  \item[DGCNN] Deep Graph Convolutional Neural Network
+  \item[FFHS] Fernfachhochschule Schweiz
+  \item[GCN] Graph Convolutional Network
+  \item[GNN] Graph Neural Network
+  \item[PC] Principal Component
+  \item[PCA] Principal Component Analysis
+  \item[QSAR] Quantitative Structure-Activity Relationship
+  \item[QSPR] Quantitative Structure-Property Relationship
+  \item[SVM] Support Vector Machine
+  \item[WWW] World Wide Web 
+\end{abkuerzungen}
+
+\clearpairofpagestyles
+\cfoot[\pagemark]{\pagemark}
+\ihead{\leftmark}
+\ohead{\rightmark}
+\pagestyle{scrheadings}
+
+\startThesis % Befehl muss vor dem ersten chapter stehen (Seitennummerierung!)
+
+\input{chapters/10_introduction}
+\newpage
+\input{chapters/20_theory}
+\newpage
+\input{chapters/30_results}
+\newpage
+\input{chapters/40_code}
+\newpage
+\input{chapters/50_discussion}
+\newpage
+\input{chapters/99_appendix}
+
+\end{document}

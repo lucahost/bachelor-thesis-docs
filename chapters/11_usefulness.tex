@@ -1,0 +1,52 @@
+\subsection{Stand der Forschung}
+
+Der Begriff \enquote{Usefulness} ist in der Graphentheorie ausgesprochen schwer zu definieren \cite[p.~144]{ma_usefulness_2022}, es gibt aber verschiedene anwendungsspezifische Ansätze, wie die \enquote{Usefulness} eines Messwertes definiert werden kann \cite[p.~932]{basak_qspr_2000} \cite[p.~581]{raychaudhury_discrimination_1984}.
+Es wird beabsichtigt, die Usefulness von topologischen Indizes in einer quantitativen Studie von vordefinierten Netzwerkklassen zu untersuchen.
+Diese Arbeit wird sich auf einzelne topologische Indizes konzentrieren und ihre Korrelation und Ähnlichkeit innerhalb der Netzwerkklassen analysieren.
+
+\subsubsection{Die Suche nach dem optimalen Index}
+
+Bereits im Jahr 1990 forschte Randić nach den optimalen Indizes \cite{randic_croatica_nodate}.
+In einer Ausgabe der Croatia Chemica Acta dokumentiert er die Suche nach einem optimalen Mass, welches die Eigenschaften eines Graphen am ausführlichsten beschreibt.
+Die kritische Feststellung von Randić ist, dass die topologischen Indizes möglichst orthogonal sein sollten, um die Eigenschaften eines Graphen am besten wiederzugeben \cite{randic_croatica_nodate}.
+Aus den Ergebnissen ist ersichtlich, dass bestimmte topologische Indizes sich besser eignen, bestimmte Eigenschaften vorherzusagen, während andere weniger effektiv sind. 
+Randić schlussfolgert, dass eine Kombination von Indizes die besten Vorhersagen ermöglicht und dass die Suche nach dem optimalen Set von Indizes ein wesentlicher Schritt bei der Vorhersage von Moleküleigenschaften ist.
+Es konnte bereits festgestellt werden, dass verschiedene Masse eine gewisse Redundanz aufweisen \cite{kraus_probabilistic_2014}. 
+
+\subsubsection{Usefulness}
+
+\paragraph{Usefulness-Score}
+
+Der Usefulness-Score (engl. für Nützlichkeitspunktzahl) ist ein Mass dafür, wie nützlich oder hilfreich etwas ist.
+Er wird häufig verwendet, um Produkte, Dienstleistungen oder Informationsquellen zu bewerten und deren Wirksamkeit zu bestimmen.
+Es gibt zahlreiche Möglichkeiten, Nützlichkeitsbewertungen zu berechnen.
+
+Die spezifische Methode, die eingesetzt wird, hängt dabei vom gegebenen Kontext ab, für den die Bewertung dient.
+Einige gängige Methoden sind Kundenbefragungen, Benutzertests und Expertenbewertungen.
+Beispielsweise kann ein Unternehmen Kunden befragen, um die Nützlichkeit seiner Produkte zu ermitteln, oder ein Forscher kann Benutzertests durchführen, um die Nützlichkeit einer neuen Softwareanwendung zu bewerten.
+Mit Usefulness-Scores kann die Entscheidungsfindung in einer Vielzahl von Kontexten quantifiziert werden.
+Ein Unternehmen kann etwa über Kundenfeedback und Nützlichkeitsbewertungen bestimmen, welche Produkte auf Lager gehalten werden sollen oder ob Verbesserungen an bestehenden Produkten vorzunehmen sind. 
+In ähnlicher Weise kann eine Bibliothek Usability-Studien und Usefulness-Scores verwenden, um zu ermitteln, welche Ressourcen gekauft oder Benutzern zur Verfügung gestellt werden sollen \cite{fiszman_automatic_2009}.
+
+\paragraph{Usefulness von topologischen Indizes}
+
+In derselben Arbeit von Randić (1990) \cite{randic_croatica_nodate} werden \textit{nützliche} Eigenschaften von topologischen Indizes angesprochen.
+Danail Bonchev und Oskar E. Polansky diskutieren die Anwendung von Konzepten wie Knoten- und Graphentheorie auf chemische Strukturen und zeigen, wie sie zur Beschreibung von Eigenschaften wie Reaktivität und Stabilität von Verbindungen verwendet werden können. 
+Bonchev argumentiert, dass topologische Indizes eine effektive Möglichkeit darstellen, komplexe chemische Systeme zu beschreiben und zu verstehen sowie, dass ihre Verwendung bei der Vorhersage und Modellierung chemischer Reaktionen von grossem Nutzen sein kann \cite{bonchev_topological_1987}.
+
+\paragraph{Genereller Ansatz zur Usefulness}
+
+Von Ma et al. \cite{ma_usefulness_2022} wurden erste Versuche unternommen, um Messwerte für verschiedene Klassen zu bewerten und deren Usefulness zu berechnen.
+Im dazu in der Zeitschrift Information Sciences veröffentlichten Artikel \cite{ma_usefulness_2022} wird ein topologischer Index als numerisches Mass definiert, das die topologische Struktur eines Graphen charakterisiert und dazu verwendet werden kann, um die Konnektivität oder Komplexität eines Netzwerks zu beschreiben. 
+In ihrer Veröffentlichung legen die Wissenschaftler die Nutzung topologischer Indizes in einer Vielzahl von Bereichen dar, darunter Chemie, Biologie und soziale Netzwerke. 
+Die Autoren diskutieren auch die Grenzen topologischer Indizes und schlagen Möglichkeiten vor, wie sie verbessert oder erweitert werden könnten, um die Komplexität realer Netzwerke besser zu erfassen. 
+Insgesamt liegt der Nutzen topologischer Indizes in ihrer Fähigkeit, ein quantitatives Mass für die topologische Struktur eines Graphen bereitzustellen, das zur Untersuchung der Eigenschaften komplexer Systeme und zur Lösung von Problemen in vielen Bereichen verwendet werden kann.
+
+Mathematisch wird die Usefulness eines topologischen Index als Vektor repräsentiert:
+Dieser besteht aus verschiedenen Meta-Indizes wie  der \textit{Structure Sensitivity}, der \textit{Abruptness} und der \textit{Structural Graph Measure} eines topologischen Index.
+Diese Meta-Indizes sind in vorhergehenden quantitativen Forschungsarbeiten definiert worden \cite{furtula_structure-sensitivity_2013,dehmer_information_2012}.
+\begin{equation}
+    U^{W}(P_6) = (W(P_6), Abr(W, P_6), SS(W, P_6), I_{\lambda}(P_6))
+\end{equation}
+Dabei ist $U^W(P_6)$ der Usefulness-Vektor des Wiener-Index für das Netzwerk $P_6$ und $P_6$ ist ein Pfadgraph mit sechs Knoten.
+$Abr$ ist die Abruptness-Funktion, $SS$ die Structure-Sensitivity-Funktion und $I_{\lambda}$ die \textit{Structural-Graph-Measure}.

@@ -1,0 +1,36 @@
+@startuml
+skinparam dpi 300
+
+title Anwendung
+
+legend
+<b>Eingabe</b> als Notize <i>links</i>
+<b>Ausgabe</b> als #palegreen Box
+end legend
+
+:Graph G(V,E) Eingabe;
+
+note left
+<img src="D:\dev\git\gitlab\ffhs\luca.hostettler\bt-hostettler\docs\images\20_material_methods\simple_graph.png"{scale=0.2}>
+end note
+
+:Graphen mit ML-Model klassifizieren;
+
+note left
+    ML-Model aus Graphenklassifikation
+end note
+
+#palegreen:Zuweisung einer Graphenklasse aus { Random, Small-World, Scale-free, Complete, Tree, Line, Star };
+
+:Gib useful topologische Indizes für die Graphenklasse aus;
+
+note left
+    Topologische Indizes für Graphenklasse
+    aus der statistischen Analyse
+end note
+
+#palegreen:Useful topologische Indizes für Graphenklasse { Wiener, Randic, ... };
+
+end
+
+@enduml

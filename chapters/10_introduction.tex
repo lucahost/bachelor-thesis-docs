@@ -1,0 +1,55 @@
+\chapter{Einleitung} \label{chap:introduction}
+
+Die Netzwerktheorie ist ein untergeordnetes Forschungsfeld der Mathematik und Data Science.
+Seit über 80 Jahren wird im akademischen Bereich der Graphentheorie aktiv geforscht \cite{kozyrev_graph_1974,bavelas_alex_1948}.
+Kozyrev fasst in seiner Analyse von 1974 die bedeutendsten Meilensteine in der Vergangenheit der Netzwerktheorie zusammen.
+Weiter diskutiert er über deren Ursprung und verweist dabei auf Euler’s, die berühmten \enquote{sieben Brücken von Königsberg} aus dem Jahr 1726.
+
+Im Jahr 1977, also drei Jahre nach Kozyrevs Veröffentlichung, ist ein Artikel von Linton Freeman erschienen, in welchem dieser die Zentralitätsmasse eines Netzes auf Basis der Forschung von Bavelas definiert \cite{freeman_set_1977,bavelas_alex_1948}.
+Über die Jahre sind zahlreiche Masse entwickelt worden, um die Struktur von Netzwerken zu analysieren, wie der Wiener-Index \cite{wiener_structural_1947} oder der Randić-Index \cite{randic_characterization_1975}.
+Bei den Massen geht es darum, die Struktur eines Netzwerkes zu charakterisieren oder einzigartige Muster in Netzen zu erkennen. In den darauffolgenden Jahren sind immer mehr Masse veröffentlicht worden.
+Mit der Zeit wird es kompliziert, für ein Netzwerk die richtigen Masse zu finden, welche eine kräftige Aussage über dessen Topologie geben.
+
+\section{Herleitung}
+
+Von Balaban et al. \cite{balaban_1983_2014} werden über 1983 topologische Netzwerkindizes zusammengefasst.
+Viele davon eignen sich nicht für alle Netzwerkklassen und einige überschneiden sich mit anderen \cite{balaban_highly_1982,kraus_probabilistic_2014,gomes_combination_2019}.
+Je nach Betrachtung gibt es sogar Redundanzen von bestimmten Massen.
+
+\input{chapters/11_usefulness}
+
+\subsection{Wissenschaftlicher Bezug}
+
+Mit der Thesis wird das Ziel verfolgt, einen Beitrag in der quantitativen Netzwerkanalyse zu leisten. 
+Es geht darum, eine Anwendung zu schaffen, welcher es ermöglicht, topologische Messwerte nach ihrer Aussagekraft bzw. Usefulness zu bewerten.
+In der Chemieinformatik sowie der Bioinformatik werden Netzwerke zur Analyse von Molekülen und Proteinen verwendet.
+Dabei helfen die topologischen Indizes, die Struktur von Molekülen und Proteinen zu charakterisieren.
+Die Anwendung soll eine Hilfestellung für die Selektion der topologischen Indizes sein.
+
+\section{Zentrale Fragestellung}
+
+Die zentrale Fragestellung der Thesis ist, wie die topologischen Indizes sinnvoll miteinander verglichen werden können und wie ein nützlicher topologischer Index für die Eingabe eines Netzwerkes berechnet werden kann. 
+Dieser Hintergrund führt zu drei verschiedene Forschungsfragen und drei Hypothesen, mittels derer die zentrale Fragestellung beantwortet werden soll. 
+Schliesslich wird mit dieser Arbeit die Absicht verfolgt, die Hypothesen zu überprüfen und die Forschungsfragen zu beantworten.
+
+Die Forschungsfragen lauten:
+
+\begin{itemize}
+    \setlength\itemsep{0.3em}
+    \item [\textbf{F1}] Wie können verschiedene topologische Indizes sinnvoll miteinander verglichen werden?
+    \item [\textbf{F2}] Wie kann ein nützlicher topologischer Index $\Phi$ für die Eingabe eines Netzwerkes $\mathcal{G}$ berechnet werden?
+    \item [\textbf{F3}] Kann durch Einsatz von Machine Learning der Vergleich von topologischen Netzwerkmesswerten optimiert werden?
+\end{itemize}
+
+Zur Beantwortung der Forschungsfragen werden die folgenden Hypothesen aufgestellt:
+
+\begin{itemize}
+    \setlength\itemsep{0.5em}
+    \item [\textbf{H1}] Topologische Indizes können miteinander verglichen werden, indem sie in einer Menge $\mathcal{G}$ Graphen einer Netzwerkklasse $\mathcal{N}$ gegenübergestellt und analysiert werden.
+    \item [\textbf{H2}] Ein nützlicher topologischer Index $\Phi$ für die Eingabe eines Netzwerkes kann gefunden werden, indem die Relevanzen der topologischen Indizes innerhalb der Netzwerkklasse $\mathcal{N}$ definiert und berechnet werden.
+    \item [\textbf{H3}] Durch den Einsatz von Machine Learning kann der Prozess für das Analysieren und Untersuchen der Relevanz von $\Phi$ in $\mathcal{N}$ verbessert und vereinfacht werden.
+\end{itemize}
+
+Im nachfolgenden Kapitel, Kapitel \ref{chap:graph_theory}. Theorie, werden die Grundlagen für die Beantwortung der Forschungsfragen und Hypothesen erläutert.
+
+In der Methodik und der Erarbeitung der Resultate erfolgt eine Annäherung an die Fragestellung von verschiedenen Seiten und es werden unterschiedliche Möglichkeiten diskutiert, die topologischen Indizes miteinander zu vergleichen.
